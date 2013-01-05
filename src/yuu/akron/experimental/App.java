@@ -1,10 +1,11 @@
 package yuu.akron.experimental;
 
+//import yuu.akron.ucollection.another.*;
+//import yuu.akron.ucollection.interfaces.another.*;
+import com.google.common.collect.Lists;
 import yuu.akron.ucollection.*;
 import yuu.akron.ucollection.interfaces.*;
-import yuu.akron.ucollection.another.*;
-import yuu.akron.ucollection.interfaces.another.*;
-
+import java.util.*;
 
 /**
  * 実験のためのクラス
@@ -19,9 +20,11 @@ public class App {
      * いろいろ試すメイン関数
      */
     public static void main(String[] args) {
-        List<String> list = new ArrayList<String>("a", "b");
-        List<String> list2 = new UArrayList<String>("c", "d");
-        
-        System.out.println(""+list + list2);
+        //従来
+        List<String> list = new ArrayList<String>(Arrays.asList("a", "b"));
+        List<String> list2 = Arrays.asList("a", "b");
+        //拡張
+        UList<String> slist = new UArrayList<String>("a", "b");
+        UList<String> slist2 = UArrayList.newList("a", "b");
     }
 }
