@@ -1,0 +1,92 @@
+   
+    public yuu.akron.ucollection.interfaces.another.List<E> checked(Class<E> type);
+
+    public yuu.akron.ucollection.interfaces.another.List<E> synchronize();
+
+    public yuu.akron.ucollection.interfaces.another.List<E> unmodifiable();
+    
+    public yuu.akron.ucollection.interfaces.another.List<E> empty();
+    
+    public yuu.akron.ucollection.interfaces.another.List<E> singleton(E o);
+    
+    public yuu.akron.ucollection.interfaces.another.List<E> immutable();
+    
+    public yuu.akron.ucollection.interfaces.another.List<E> forwarding(List<E> list);
+
+    @Override
+    public yuu.akron.ucollection.another.LinkedList<E> checked(Class<E> type) {
+        if (this instanceof yuu.akron.ucollection.another.LinkedList) {
+            list = Collections.checkedList(list, type);
+            att = Attribute.checked;
+            this.type = type;
+            return (yuu.akron.ucollection.another.LinkedList<E>) this;
+        } else {
+            return new yuu.akron.ucollection.another.LinkedList<E>(list).checked(type);
+        }
+    }
+
+    @Override
+    public yuu.akron.ucollection.another.LinkedList<E> synchronize() {
+        if (this instanceof yuu.akron.ucollection.another.LinkedList) {
+            list = Collections.synchronizedList(list);
+            att = Attribute.synchronize;
+            return (yuu.akron.ucollection.another.LinkedList<E>) this;
+        } else {
+            return new yuu.akron.ucollection.another.LinkedList<E>(list).synchronize();
+        }
+    }
+
+    @Override
+    public yuu.akron.ucollection.another.LinkedList<E> unmodifiable() {
+        if (this instanceof yuu.akron.ucollection.another.LinkedList) {
+            list = Collections.unmodifiableList(list);
+            att = Attribute.unmodifiable;
+            return (yuu.akron.ucollection.another.LinkedList<E>) this;
+        } else {
+            return new yuu.akron.ucollection.another.LinkedList<E>(list).unmodifiable();
+        }
+    }
+
+    @Override
+    public yuu.akron.ucollection.another.LinkedList<E> empty() {
+        if (this instanceof yuu.akron.ucollection.another.LinkedList) {
+            list = Collections.emptyList();
+            att = Attribute.empty;
+            return (yuu.akron.ucollection.another.LinkedList<E>) this;
+        } else {
+            return new yuu.akron.ucollection.another.LinkedList<E>(list).empty();
+        }
+    }
+
+    @Override
+    public yuu.akron.ucollection.another.LinkedList<E> forwarding(List<E> list) {
+        if (this instanceof yuu.akron.ucollection.another.LinkedList) {
+            this.list = list;
+            att = Attribute.forwarding;
+            return (yuu.akron.ucollection.another.LinkedList<E>) this;
+        } else {
+            return new yuu.akron.ucollection.another.LinkedList<E>(list).forwarding(list);
+        }
+    }
+
+    @Override
+    public yuu.akron.ucollection.another.LinkedList<E> immutable() {
+        if (this instanceof yuu.akron.ucollection.another.LinkedList) {
+            list = ImmutableList.copyOf(list);
+            att = Attribute.immutable;
+            return (yuu.akron.ucollection.another.LinkedList<E>) this;
+        } else {
+            return new yuu.akron.ucollection.another.LinkedList<E>(list).immutable();
+        }
+    }
+
+    @Override
+    public yuu.akron.ucollection.another.LinkedList<E> singleton(E o) {
+        if (this instanceof yuu.akron.ucollection.another.LinkedList) {
+            list = Collections.singletonList(o);
+            att = Attribute.singleton;
+            return (yuu.akron.ucollection.another.LinkedList<E>) this;
+        } else {
+            return new yuu.akron.ucollection.another.LinkedList<E>(list).singleton(o);
+        }
+    }
