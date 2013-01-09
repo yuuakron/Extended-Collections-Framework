@@ -35,6 +35,7 @@ ucollectionの設計目標は以下
 ucollectionの使い方
 Java Collections Frameworkと共存性を持たせるためにパッケージが4つに分かれている。
 それぞれのパッケージは以下。
+
 1. yuu.akron.ucollection：拡張実装クラスと短縮名クラス群
 2. yuu.akron.ucollection.another：java.util下のクラスと同名のクラス群
 3. yuu.akron.ucollection.interfaces：拡張インターフェースと短縮インターフェース群
@@ -45,6 +46,7 @@ Java Collections Frameworkと共存性を持たせるためにパッケージが
 
 例：共存する場合
 
+```java
     import java.util.*;
     import yuu.akron.ucollection.*;
     import yuu.akron.ucollection.interfaces.*;
@@ -52,32 +54,37 @@ Java Collections Frameworkと共存性を持たせるためにパッケージが
     List<String> jlist = new ArrayList<String>();   //java.util.ArrayList
     ListWithUtility<String> elist = new ArrayListWithUtility<String>(); //拡張実装クラス
     UList<String> slist = new UArrayList<String>(); //短縮名
+```
 
 例：入れ替える場合
 
+```java
     import yuu.akron.ucollection.another.*;
     import yuu.akron.ucollection.interfaces.another.*;
 
     List<Stinrg> alist = new ArrayList<String>();   //中身は拡張実装クラス
-
+```
 
 拡張インターフェースはjava.util以下のインターフェースを継承しているため拡張実装クラスはjava.utilのインターフェース型の変数にも代入可能。
 
 例：
-
+```java
     import java.util.*;
     import yuu.akron.ucollection.*;
 
     List<String> jlist = new ArrayListWithUtility<String>();
+```
 
 拡張実装クラスはjava.util下のクラスを継承している（EnumSet以外）ためjava.utilの実装クラス型の変数にも代入可能
 
 例：
 
+```java
     import java.util.*;
     import yuu.akron.ucollection.*;
 
     ArrayList<String> jlist = new ArrayListWithUtility<String>();
+```
 
 拡張実装クラス、短縮名クラス、同名クラスは継承関係になっている。
 java.utilクラス=>拡張実装クラス=>短縮名クラス=>同名クラス
@@ -85,7 +92,7 @@ java.utilクラス=>拡張実装クラス=>短縮名クラス=>同名クラス
 このような関係のため次のような結果になる。
 
 例：
-
+```java
     ArrayListWithUtility<String> elist; //拡張
     UArrayList<String> slist; //短縮名
     ArrayList<String> alist;  //同名
@@ -99,11 +106,12 @@ java.utilクラス=>拡張実装クラス=>短縮名クラス=>同名クラス
     alist = new ArrayListWithUtility<String>();    //error
     alist = new UArrayList<String>();              //error
     alist = new ArrayList<String>();
+```
 
 ただし、3つのクラスは3つのインターフェース（拡張、短縮、同名）をすべて実装しているためにインターフェースを介した場合は同じように利用可能である。
 
 例：
-
+```java
     ListWithUtility<String> elist; //拡張
     UList<String> slist; //短縮名
     List<String> alist;  //同名
@@ -117,11 +125,11 @@ java.utilクラス=>拡張実装クラス=>短縮名クラス=>同名クラス
     alist = new ArrayListWithUtility<String>();
     alist = new UArrayList<String>();
     alist = new ArrayList<String>();
-
+```
 3つのクラスは中身が同じならequalsメソッドでは等価になるように設計されている。
 
 例：
-
+```java
     ListWithUtility<String> elist = new ArrayListWithUtility<String>("a");
     UList<String> slist = new UArrayList<String>("a");
     List<String> alist = new ArrayList<String>("a");
@@ -135,11 +143,11 @@ java.utilクラス=>拡張実装クラス=>短縮名クラス=>同名クラス
     System.out.println(alist.equals(elist));    //true
     System.out.println(alist.equals(slist));    //true
     System.out.println(slist.equals(alist));    //true
-
+```
 現状ではjava.utilのクラスとの比較ではequals規約違反になっている。いずれ改善の予定。
 
 例：
-
+```java
     ListWithUtility<String> elist = new ArrayListWithUtility<String>("a");
     UList<String> slist = new UArrayList<String>("a");
     List<String> jlist = new ArrayList<String>(Arrays.asList("a"));
@@ -153,14 +161,15 @@ java.utilクラス=>拡張実装クラス=>短縮名クラス=>同名クラス
     System.out.println(jlist.equals(elist));    //true
     System.out.println(jlist.equals(slist));    //true
     System.out.println(jlist.equals(jlist));    //true
-
+```
 スタティックファクトリーメソッドなどが追加されている。
 
 例：
-
+```java
     //従来の書き方
     List<String> list = new ArrayList<String>(Arrays.asList("a", "b"));
     List<String> list2 = Arrays.asList("a", "b");
     //拡張フレームワークで可能になった書き方（従来の書き方も可能）
     UList<String> slist = new UArrayList<String>("a", "b");
     UList<String> slist2 = UArrayList.newList("a", "b");
+```
