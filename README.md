@@ -9,24 +9,18 @@ Java Collections Frameworkを拡張したフレームワークを目指してい
 2. 関数型のようなコレクション：functional collections(fcollection)
 3. 動的に内部動作を最適化するコレクション：dynamic collections(dcollection)
 
-個人で使うために設計、実装しているためJavaの流儀や考え方には反している部分もある。
-
-Objective-C, Scala, Xtend, haskellなどの影響を受けている。
-
-いるかどうかはわからないが複数人で利用する場合は劇薬になる場合があるかもしれないので要注意。
-
+個人で使うために設計、実装しているためJavaの流儀や考え方には反している部分もある。  
+Objective-C, Scala, Xtend, haskellなどの影響を受けている。  
+いるかどうかはわからないが複数人で利用する場合は劇薬になる場合があるかもしれないので要注意。  
 またJavaにてインターフェースを拡張する場合のコンセプトコードでもある。
 
-ucollectionの実装はほぼ完成(現状ではjava.util以下のクラスのみ)。
-
-ただし、テストとテストコード, JavaDocが未完成。
-
+ucollectionの実装はほぼ完成(現状ではjava.util以下のクラスのみ)。  
+ただし、テストとテストコード, JavaDocが未完成。  
 他はまだまだ実験段階。
 
 利用方法
 -------
-NetBeansプロジェクト形式で配布されるのでNetBeansでビルドしてください。
-
+NetBeansプロジェクト形式で配布されるのでNetBeansでビルドしてください。  
 またはNetBenasのプロジェクト形式なのでantでもビルド可能。
 
 ライセンス
@@ -44,13 +38,11 @@ ucollectionについて
 4. 各インターフェース、各実装クラスはJava Collections Frameworkの対応クラスと容易に入れ替え可能
 5. 短い名前を用意する。
 
-現状の実装ではjava.util.Collectionsなどのユーティリティクラスを統合している。
-
+現状の実装ではjava.util.Collectionsなどのユーティリティクラスを統合している。  
 guavaに依存。
 
 ### ucollectionの使い方
-Java Collections Frameworkと共存性を持たせるためにパッケージが4つに分かれている。
-
+Java Collections Frameworkと共存性を持たせるためにパッケージが4つに分かれている。  
 それぞれのパッケージは以下。
 
 1. yuu.akron.ucollection：拡張実装クラスと短縮名クラス群
@@ -58,8 +50,7 @@ Java Collections Frameworkと共存性を持たせるためにパッケージが
 3. yuu.akron.ucollection.interfaces：拡張インターフェースと短縮インターフェース群
 4. yuu.akron.ucollection.interfaces.another：java.util下のインターフェースと同名のインターフェース群
 
-共存させたい場合は.anotherで終わらないパッケージを、置き換えたい場合は.anotherで終わるパッケージをインポートする。
-
+共存させたい場合は.anotherで終わらないパッケージを、置き換えたい場合は.anotherで終わるパッケージをインポートする。  
 これはクラス名を同名にすることにより実現している（パッケージは異なる）。
 
 例：共存する場合
@@ -84,8 +75,7 @@ List<Stinrg> alternativeList = new ArrayList<String>();                 //同名
 java.util.List<String> javaList = new java.util.ArrayList<String>();    //完全修飾名なら共存可能
 ```
 
-拡張インターフェースはjava.util以下のインターフェースを継承している。
-
+拡張インターフェースはjava.util以下のインターフェースを継承している。  
 そのため拡張実装クラスはjava.utilのインターフェース型の変数にも代入可能。
 
 ```java
@@ -95,8 +85,7 @@ import yuu.akron.ucollection.*;
 List<String> javaList = new ArrayListWithUtility<String>();
 ```
 
-拡張実装クラスはjava.util下のクラスを継承している（EnumSet以外）。
-
+拡張実装クラスはjava.util下のクラスを継承している（EnumSet以外）。  
 そのため、java.utilの実装クラス型の変数にも代入可能
 
 ```java
@@ -106,12 +95,9 @@ import yuu.akron.ucollection.*;
 ArrayList<String> javaList = new ArrayListWithUtility<String>();
 ```
 
-拡張実装クラス、短縮名クラス、同名クラスは継承関係になっている。
-
-java.utilクラス=>拡張実装クラス=>短縮名クラス=>同名クラス
-
-左が親、右が子の関係である。
-
+拡張実装クラス、短縮名クラス、同名クラスは継承関係になっている。  
+java.utilクラス=>拡張実装クラス=>短縮名クラス=>同名クラス  
+左が親、右が子の関係である。  
 このような関係のため次のような結果になる。
 
 ```java
@@ -160,8 +146,7 @@ alternativeList = new UArrayList<String>();
 alternativeList = new ArrayList<String>();
 ```
 
-3つのクラスは中身が同じならequalsメソッドでは等価になるように設計されている。
-
+3つのクラスは中身が同じならequalsメソッドでは等価になるように設計されている。  
 また、現状ではjava.utilのクラスとの比較ではequals規約違反になっている。いずれ改善の予定。
 
 ```java
