@@ -1,11 +1,10 @@
 package yuu.akron.experimental;
 
-//import yuu.akron.ucollection.another.*;
-//import yuu.akron.ucollection.interfaces.another.*;
-import com.google.common.collect.Lists;
+import java.util.Arrays;
+import yuu.akron.ucollection.another.*;
+import yuu.akron.ucollection.interfaces.another.*;
 import yuu.akron.ucollection.*;
 import yuu.akron.ucollection.interfaces.*;
-import java.util.*;
 
 /**
  * 実験のためのクラス
@@ -20,11 +19,25 @@ public class App {
      * いろいろ試すメイン関数
      */
     public static void main(String[] args) {
-        //従来
-        List<String> list = new ArrayList<String>(Arrays.asList("a", "b"));
-        List<String> list2 = Arrays.asList("a", "b");
-        //拡張
-        UList<String> slist = new UArrayList<String>("a", "b");
-        UList<String> slist2 = UArrayList.newList("a", "b");
+        java.util.List<String> javaList = new java.util.ArrayList<String>(Arrays.asList("a"));
+        ListWithUtility<String> extendedList = new ArrayListWithUtility<String>("a");
+        UList<String> shortNameList = new UArrayList<String>("a");
+        List<String> alternativeList = new ArrayList<String>("a");
+
+        System.out.println(extendedList.equals(extendedList));      //true
+        System.out.println(extendedList.equals(shortNameList));     //true
+        System.out.println(extendedList.equals(alternativeList));   //true
+        System.out.println(shortNameList.equals(extendedList));     //true
+        System.out.println(shortNameList.equals(shortNameList));    //true
+        System.out.println(shortNameList.equals(alternativeList));  //true
+        System.out.println(alternativeList.equals(extendedList));   //true
+        System.out.println(alternativeList.equals(shortNameList));  //true
+
+        System.out.println(javaList.equals(extendedList));          //true
+        System.out.println(javaList.equals(shortNameList));         //true
+        System.out.println(javaList.equals(alternativeList));       //true    
+        System.out.println(extendedList.equals(javaList));          //false
+        System.out.println(shortNameList.equals(javaList));         //false
+        System.out.println(alternativeList.equals(javaList));       //false
     }
 }
