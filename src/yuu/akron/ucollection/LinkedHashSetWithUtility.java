@@ -171,21 +171,4 @@ public class LinkedHashSetWithUtility<E> extends LinkedHashSet<E> implements yuu
     public yuu.akron.ucollection.another.LinkedHashSet<E> clone() {
         return new yuu.akron.ucollection.another.LinkedHashSet(this);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if ((!(obj instanceof LinkedHashSetWithUtility))
-                && (!(obj instanceof ULinkedHashSet))
-                && (!(obj instanceof yuu.akron.ucollection.another.LinkedHashSet))) {
-            return false;
-        }
-        final LinkedHashSetWithUtility<E> other = (LinkedHashSetWithUtility<E>) obj;
-        if (this != other && (this == null || !super.equals(other))) {
-            return false;
-        }
-        return true;
-    }
 }

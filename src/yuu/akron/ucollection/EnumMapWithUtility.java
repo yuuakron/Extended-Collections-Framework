@@ -96,22 +96,5 @@ public class EnumMapWithUtility<K extends Enum<K>, V> extends EnumMap<K, V> impl
     @Override
     public yuu.akron.ucollection.another.EnumMap<K, V> clone() {
         return  new yuu.akron.ucollection.another.EnumMap<K, V>(this);
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if ((!(obj instanceof EnumMapWithUtility))
-                && (!(obj instanceof UEnumMap))
-                && (!(obj instanceof yuu.akron.ucollection.another.EnumMap))) {
-            return false;
-        }
-        final EnumMapWithUtility<K, V> other = (EnumMapWithUtility<K, V>) obj;
-        if (this != other && (this == null || !super.equals(other))) {
-            return false;
-        }
-        return true;
-    }  
+    } 
 }

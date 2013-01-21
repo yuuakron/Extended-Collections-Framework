@@ -149,21 +149,4 @@ public class ArrayDequeWithUtility<E> extends ArrayDeque<E> implements yuu.akron
     public <T> yuu.akron.ucollection.another.ArrayDeque<T> transform(Function<? super E, T> function) {
         return new yuu.akron.ucollection.another.ArrayDeque<T>(Collections2.transform(this, function));
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if ((!(obj instanceof ArrayDequeWithUtility))
-                && (!(obj instanceof UArrayDeque))
-                && (!(obj instanceof yuu.akron.ucollection.another.ArrayDeque))) {
-            return false;
-        }
-        final ArrayDequeWithUtility<E> other = (ArrayDequeWithUtility<E>) obj;
-        if (this != other && (this == null || !super.equals(other))) {
-            return false;
-        }
-        return true;
-    }
 }

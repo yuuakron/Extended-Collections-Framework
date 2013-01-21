@@ -206,21 +206,4 @@ public class TreeSetWithUtility<E> extends TreeSet<E> implements yuu.akron.ucoll
     public Sets.SetView<E> union(Set<? extends E> set2) {
         return Sets.union(this, set2);
     }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if ((!(obj instanceof TreeSetWithUtility))
-                && (!(obj instanceof UTreeSet))
-                && (!(obj instanceof yuu.akron.ucollection.another.TreeSet))) {
-            return false;
-        }
-        final TreeSetWithUtility<E> other = (TreeSetWithUtility<E>) obj;
-        if (this != other && (this == null || !super.equals(other))) {
-            return false;
-        }
-        return true;
-    }
 }

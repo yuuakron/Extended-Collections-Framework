@@ -105,21 +105,4 @@ public class HashMapWithUtility<K, V> extends HashMap<K, V> implements yuu.akron
     public yuu.akron.ucollection.another.HashMap<K, V> clone() {
         return new yuu.akron.ucollection.another.HashMap<K, V>(this);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if ((!(obj instanceof HashMapWithUtility))
-                && (!(obj instanceof UHashMap))
-                && (!(obj instanceof yuu.akron.ucollection.another.HashMap))) {
-            return false;
-        }
-        final HashMapWithUtility<K, V> other = (HashMapWithUtility<K, V>) obj;
-        if (this != other && (this == null || !super.equals(other))) {
-            return false;
-        }
-        return true;
-    }
 }

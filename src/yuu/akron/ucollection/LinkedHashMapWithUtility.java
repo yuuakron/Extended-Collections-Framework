@@ -113,21 +113,4 @@ public class LinkedHashMapWithUtility<K, V> extends LinkedHashMap<K, V> implemen
     public yuu.akron.ucollection.another.LinkedHashMap<K, V> clone() {
         return new yuu.akron.ucollection.another.LinkedHashMap<K, V>(this);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if ((!(obj instanceof LinkedHashMapWithUtility))
-                && (!(obj instanceof ULinkedHashMap))
-                && (!(obj instanceof yuu.akron.ucollection.another.LinkedHashMap))) {
-            return false;
-        }
-        final LinkedHashMapWithUtility<K, V> other = (LinkedHashMapWithUtility<K, V>) obj;
-        if (this != other && (this == null || !super.equals(other))) {
-            return false;
-        }
-        return true;
-    }
 }

@@ -269,21 +269,4 @@ public class ArrayListWithUtility<E> extends ArrayList<E> implements yuu.akron.u
     public <T> yuu.akron.ucollection.another.ArrayList<T> transform(Function<? super E, T> function) {
         return new yuu.akron.ucollection.another.ArrayList<T>(Collections2.transform(this, function));
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if ((!(obj instanceof ArrayListWithUtility))
-                && (!(obj instanceof UArrayList))
-                && (!(obj instanceof yuu.akron.ucollection.another.ArrayList))) {
-            return false;
-        }
-        final ArrayListWithUtility<E> other = (ArrayListWithUtility<E>) obj;
-        if (this != other && (this == null || !super.equals(other))) {
-            return false;
-        }
-        return true;
-    }
 }

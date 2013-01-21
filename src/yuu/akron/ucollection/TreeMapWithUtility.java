@@ -148,21 +148,4 @@ public class TreeMapWithUtility<K, V> extends TreeMap<K, V> implements yuu.akron
     public yuu.akron.ucollection.another.TreeMap<K, V> clone() {
         return new yuu.akron.ucollection.another.TreeMap<K, V>(this);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if ((!(obj instanceof TreeMapWithUtility))
-                && (!(obj instanceof UTreeMap))
-                && (!(obj instanceof yuu.akron.ucollection.another.TreeMap))) {
-            return false;
-        }
-        final TreeMapWithUtility<K, V> other = (TreeMapWithUtility<K, V>) obj;
-        if (this != other && (this == null || !super.equals(other))) {
-            return false;
-        }
-        return true;
-    }
 }

@@ -221,21 +221,4 @@ public class LinkedListWithUtility<E> extends LinkedList<E> implements yuu.akron
     public <T> yuu.akron.ucollection.another.LinkedList<T> transform(Function<? super E, T> function) {
         return new yuu.akron.ucollection.another.LinkedList<T>(Collections2.transform(this, function));
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if ((!(obj instanceof LinkedListWithUtility))
-                && (!(obj instanceof ULinkedList))
-                && (!(obj instanceof yuu.akron.ucollection.another.LinkedList))) {
-            return false;
-        }
-        final LinkedListWithUtility<E> other = (LinkedListWithUtility<E>) obj;
-        if (this != other && (this == null || !super.equals(other))) {
-            return false;
-        }
-        return true;
-    }
 }

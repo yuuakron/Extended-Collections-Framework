@@ -166,21 +166,4 @@ public class PriorityQueueWithUtility<E> extends PriorityQueue<E> implements yuu
     public yuu.akron.ucollection.another.PriorityQueue<E> clone() {
         return new yuu.akron.ucollection.another.PriorityQueue<E>(this);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if ((!(obj instanceof PriorityQueueWithUtility))
-                && (!(obj instanceof UPriorityQueue))
-                && (!(obj instanceof yuu.akron.ucollection.another.PriorityQueue))) {
-            return false;
-        }
-        final PriorityQueueWithUtility<E> other = (PriorityQueueWithUtility<E>) obj;
-        if (this != other && (this == null || !super.equals(other))) {
-            return false;
-        }
-        return true;
-    }
 }

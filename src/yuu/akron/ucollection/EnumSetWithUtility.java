@@ -260,19 +260,7 @@ public class EnumSetWithUtility<E extends Enum<E>> implements yuu.akron.ucollect
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if ((!(obj instanceof EnumSetWithUtility))
-                && (!(obj instanceof UEnumSet))
-                && (!(obj instanceof yuu.akron.ucollection.another.EnumSet))) {
-            return false;
-        }
-        final EnumSetWithUtility<E> other = (EnumSetWithUtility<E>) obj;
-        if (this.set != other.set && (this.set == null || !this.set.equals(other.set))) {
-            return false;
-        }
-        return true;
+        return set.equals(obj);
     }
 
     @Override

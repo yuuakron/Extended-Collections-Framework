@@ -91,19 +91,4 @@ public class WeakHashMapWithUtility<K, V> extends WeakHashMap<K, V> implements y
     public WeakHashMapWithUtility<K, V> clone() {
         return new WeakHashMapWithUtility<K, V>(this);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final WeakHashMapWithUtility<K, V> other = (WeakHashMapWithUtility<K, V>) obj;
-        if (this != other && (this == null || !super.equals(other))) {
-            return false;
-        }
-        return true;
-    }
 }

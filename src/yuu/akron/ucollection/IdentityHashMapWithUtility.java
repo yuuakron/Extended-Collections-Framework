@@ -96,21 +96,4 @@ public class IdentityHashMapWithUtility<K, V> extends IdentityHashMap<K, V> impl
     public yuu.akron.ucollection.another.IdentityHashMap<K, V> clone() {
         return new yuu.akron.ucollection.another.IdentityHashMap<K, V>(this);
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if ((!(obj instanceof IdentityHashMapWithUtility))
-                && (!(obj instanceof UIdentityHashMap))
-                && (!(obj instanceof yuu.akron.ucollection.another.IdentityHashMap))) {
-            return false;
-        }
-        final IdentityHashMapWithUtility<K, V> other = (IdentityHashMapWithUtility<K, V>) obj;
-        if (this != other && (this == null || !super.equals(other))) {
-            return false;
-        }
-        return true;
-    }
 }

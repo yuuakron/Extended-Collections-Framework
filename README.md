@@ -146,8 +146,8 @@ alternativeList = new UArrayList<String>();
 alternativeList = new ArrayList<String>();
 ```
 
-3つのクラスは中身が同じならequalsメソッドでは等価になるように設計されている。  
-また、現状ではjava.utilのクラスとの比較ではequals規約違反になっている。いずれ改善の予定。
+4つの実装クラス(java.util、拡張、短縮、同名)は中身が同じならequalsメソッドでは等価になるように設計されている。  
+実装上はjava.utilのものと同じ。
 
 ```java
 java.util.List<String> javaList = new java.util.ArrayList<String>(Arrays.asList("a"));
@@ -167,9 +167,9 @@ System.out.println(alternativeList.equals(shortNameList));  //true
 System.out.println(javaList.equals(extendedList));          //true
 System.out.println(javaList.equals(shortNameList));         //true
 System.out.println(javaList.equals(alternativeList));       //true    
-System.out.println(extendedList.equals(javaList));          //false
-System.out.println(shortNameList.equals(javaList));         //false
-System.out.println(alternativeList.equals(javaList));       //false
+System.out.println(extendedList.equals(javaList));          //true
+System.out.println(shortNameList.equals(javaList));         //true
+System.out.println(alternativeList.equals(javaList));       //true
 ```
 
 スタティックファクトリーメソッドなどが追加されている。
