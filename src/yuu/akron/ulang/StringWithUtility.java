@@ -385,6 +385,22 @@ public class StringWithUtility implements Serializable, Comparable<String>, Char
     public void p(Object... args) {
         System.out.printf(str, args);
     }
+    
+    public static void sout(Object s) {
+        System.out.println(s);
+    }
+
+    public static void sout(String s, Object... args) {
+        System.out.printf(s, args);
+    }
+
+    public static void p(Object s) {
+        System.out.println(s);
+    }
+
+    public static void p(String s, Object... args) {
+        System.out.printf(s, args);
+    }
 
     //lang
     public StringBuilder toStrBuilder() {
