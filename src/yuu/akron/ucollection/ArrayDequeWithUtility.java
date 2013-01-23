@@ -48,10 +48,9 @@ public class ArrayDequeWithUtility<E> extends ArrayDeque<E> implements yuu.akron
         return new yuu.akron.ucollection.another.ArrayDeque<E>(elements);
     }
 
-
     @Override
     public yuu.akron.ucollection.another.ArrayDeque<E> clone() {
-        return new yuu.akron.ucollection.another.ArrayDeque<E>(this);
+        return (yuu.akron.ucollection.another.ArrayDeque<E>)super.clone();
     }
 
     @Override
@@ -148,5 +147,10 @@ public class ArrayDequeWithUtility<E> extends ArrayDeque<E> implements yuu.akron
     @Override
     public <T> yuu.akron.ucollection.another.ArrayDeque<T> transform(Function<? super E, T> function) {
         return new yuu.akron.ucollection.another.ArrayDeque<T>(Collections2.transform(this, function));
+    }
+
+    @Override
+    public yuu.akron.ucollection.another.ArrayDeque<E> deepCopy() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

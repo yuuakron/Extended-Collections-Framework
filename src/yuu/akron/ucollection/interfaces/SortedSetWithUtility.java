@@ -9,5 +9,5 @@ import java.util.SortedSet;
  * @since 1.0
  * @version 1.0
  */
-public interface SortedSetWithUtility<E> extends SetWithUtility<E>, SortedSet<E>, SortedSetUtility<E> {
+public interface SortedSetWithUtility<E> extends SetWithUtility<E>, SortedSet<E>{
 }

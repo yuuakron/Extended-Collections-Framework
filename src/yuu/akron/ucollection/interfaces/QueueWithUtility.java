@@ -9,5 +9,5 @@ import java.util.Queue;
  * @since 1.0
  * @version 1.0
  */
-public interface QueueWithUtility<E> extends CollectionWithUtility<E>, Queue<E>, QueueUtility<E> {
+public interface QueueWithUtility<E> extends CollectionWithUtility<E>, Queue<E>{
 }

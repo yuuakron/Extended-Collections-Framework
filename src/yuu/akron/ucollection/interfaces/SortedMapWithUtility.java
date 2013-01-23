@@ -10,5 +10,5 @@ import java.util.SortedMap;
  * @since 1.0
  * @version 1.0
  */
-public interface SortedMapWithUtility<K, V> extends MapWithUtility<K, V>, SortedMap<K, V>, SortedMapUtility<K, V> {
+public interface SortedMapWithUtility<K, V> extends MapWithUtility<K, V>, SortedMap<K, V> {
 }

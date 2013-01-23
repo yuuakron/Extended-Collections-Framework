@@ -5,7 +5,11 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
+import yuu.akron.ulang.DeepClonable;
+import yuu.akron.ulang.DeepCloneUtils;
 
 /**
  * テスト
@@ -102,13 +106,13 @@ public class ArrayListWithUtility<E> extends ArrayList<E> implements yuu.akron.u
 
     @Override
     public yuu.akron.ucollection.another.ArrayList<E> clone() {
-        return new yuu.akron.ucollection.another.ArrayList<E>(this);
+        return (yuu.akron.ucollection.another.ArrayList<E>) super.clone();
     }
 
     //Utility from java.util.Collections
     @Override
     public <E extends Comparable<? super E>> int binarySearch(E key) {
-        return Collections.binarySearch((List<E>)this, key);
+        return Collections.binarySearch((List<E>) this, key);
     }
 
     @Override
@@ -268,5 +272,26 @@ public class ArrayListWithUtility<E> extends ArrayList<E> implements yuu.akron.u
     @Override
     public <T> yuu.akron.ucollection.another.ArrayList<T> transform(Function<? super E, T> function) {
         return new yuu.akron.ucollection.another.ArrayList<T>(Collections2.transform(this, function));
+    }
+
+    @Override
+    public yuu.akron.ucollection.another.ArrayList<E> deepCopy() throws IOException, ClassNotFoundException {
+        if (this.isEmpty()) {
+            return new yuu.akron.ucollection.another.ArrayList<E>();
+        }
+
+        yuu.akron.ucollection.another.ArrayList<E> list = new yuu.akron.ucollection.another.ArrayList<E>();
+
+        for (E item : this) {
+            if (item instanceof DeepClonable) {
+                list.add((E) ((DeepClonable) item).deepCopy());
+            } else if (item instanceof Serializable) {
+                list.add((E) DeepCloneUtils.deepCopy((Serializable) item));
+            } else {
+                throw new IOException(item.getClass().getName()+": Not supported deepCopy");
+            }
+        }
+
+        return list;
     }
 }

@@ -7,6 +7,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
+import java.io.Serializable;
 import java.util.*;
 
 /**
@@ -16,9 +17,9 @@ import java.util.*;
  * @since 1.0
  * @version 1.0
  */
-public class EnumSetWithUtility<E extends Enum<E>> implements yuu.akron.ucollection.interfaces.another.Set<E> {
+public class EnumSetWithUtility<E extends Enum<E>> extends AbstractSet<E> implements Cloneable, Serializable, yuu.akron.ucollection.interfaces.another.Set<E> {
 
-    private static final long serialVersionUID = 1L;
+//    private static final long serialVersionUID = 1L;
     private EnumSet<E> set;
 
     protected EnumSetWithUtility(EnumSet<E> set) {
@@ -75,7 +76,11 @@ public class EnumSetWithUtility<E extends Enum<E>> implements yuu.akron.ucollect
 
     @Override
     public yuu.akron.ucollection.another.EnumSet<E> clone() {
-        return copyOf(set);
+        try {
+            return (yuu.akron.ucollection.another.EnumSet<E>) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new InternalError(e.toString());
+        }
     }
 
     @Override

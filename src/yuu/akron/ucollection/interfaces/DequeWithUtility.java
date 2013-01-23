@@ -9,5 +9,6 @@ import java.util.Deque;
  * @since 1.0
  * @version 1.0
  */
-public interface DequeWithUtility<E> extends QueueWithUtility<E>, Deque<E>, DequeUtility<E> {
+public interface DequeWithUtility<E> extends QueueWithUtility<E>, Deque<E>{
+    public yuu.akron.ucollection.interfaces.another.Queue<E> asLifoQueue();
 }
