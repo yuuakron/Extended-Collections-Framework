@@ -1,15 +1,17 @@
 package yuu.akron.experimental.dcollection;
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
 import com.google.common.collect.Sets.SetView;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-import yuu.akron.ucollection.interfaces.SetWithUtility;
 
 /**
  *
  * @author yuuakron
  */
-public class DynamicSet<E> extends DynamicCollection<E> implements SetWithUtility<E> {
+public class DynamicSet<E> extends DynamicCollection<E> implements yuu.akron.ucollection.interfaces.another.Set<E> {
 
     public static class Builder<E> {
 
@@ -87,6 +89,21 @@ public class DynamicSet<E> extends DynamicCollection<E> implements SetWithUtilit
 
     @Override
     public SetView<E> union(Set<? extends E> set2) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.Set<E> deepClone() throws IOException, ClassNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.Set<E> filter(Predicate<? super E> predicate) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public <T> yuu.akron.ucollection.interfaces.another.Set<T> transform(Function<? super E, T> function) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

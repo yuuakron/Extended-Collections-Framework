@@ -5,7 +5,12 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
+import com.rits.cloning.Cloner;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
+import yuu.akron.ulang.DeepClonable;
+import yuu.akron.ulang.DeepCloneUtils;
 
 /**
  *
@@ -50,7 +55,7 @@ public class ArrayDequeWithUtility<E> extends ArrayDeque<E> implements yuu.akron
 
     @Override
     public yuu.akron.ucollection.another.ArrayDeque<E> clone() {
-        return (yuu.akron.ucollection.another.ArrayDeque<E>)super.clone();
+        return (yuu.akron.ucollection.another.ArrayDeque<E>) super.clone();
     }
 
     @Override
@@ -150,7 +155,24 @@ public class ArrayDequeWithUtility<E> extends ArrayDeque<E> implements yuu.akron
     }
 
     @Override
-    public yuu.akron.ucollection.another.ArrayDeque<E> deepCopy() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public yuu.akron.ucollection.another.ArrayDeque<E> deepClone() throws IOException, ClassNotFoundException {
+        if (this.isEmpty()) {
+            return new yuu.akron.ucollection.another.ArrayDeque<E>();
+        }
+
+        yuu.akron.ucollection.another.ArrayDeque<E> deque = new yuu.akron.ucollection.another.ArrayDeque<E>();
+
+        for (E item : this) {
+            if (item instanceof DeepClonable) {
+                deque.add((E) ((DeepClonable) item).deepClone());
+            } else if (item instanceof Serializable) {
+                deque.add((E) DeepCloneUtils.deepCopy((Serializable) item));
+            } else {
+                Cloner cloner = new Cloner();
+                deque.add(cloner.deepClone(item));
+            }
+        }
+
+        return deque;
     }
 }

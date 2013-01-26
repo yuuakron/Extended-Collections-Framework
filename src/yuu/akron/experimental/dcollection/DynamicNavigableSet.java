@@ -1,13 +1,15 @@
 package yuu.akron.experimental.dcollection;
 
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
+import java.io.IOException;
 import java.util.*;
-import yuu.akron.ucollection.interfaces.NavigableSetWithUtility;
 
 /**
  *
  * @author yuuakron
  */
-public class DynamicNavigableSet<E> extends DynamicSet<E> implements NavigableSetWithUtility<E> {
+public class DynamicNavigableSet<E> extends DynamicSet<E> implements yuu.akron.ucollection.interfaces.another.NavigableSet<E> {
 
     public static class Builder<E> {
 
@@ -51,27 +53,18 @@ public class DynamicNavigableSet<E> extends DynamicSet<E> implements NavigableSe
     }
 
     //for SortedSet
+    @Override
     public Comparator<? super E> comparator() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
     public E first() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public SortedSet<E> headSet(E toElement) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+    @Override
     public E last() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public SortedSet<E> subSet(E fromElement, E toElement) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public SortedSet<E> tailSet(E fromElement) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -97,15 +90,7 @@ public class DynamicNavigableSet<E> extends DynamicSet<E> implements NavigableSe
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public NavigableSet<E> descendingSet() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     public E floor(E e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public NavigableSet<E> headSet(E toElement, boolean inclusive) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -125,11 +110,53 @@ public class DynamicNavigableSet<E> extends DynamicSet<E> implements NavigableSe
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public NavigableSet<E> subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive) {
+    @Override
+    public <T> yuu.akron.ucollection.interfaces.another. NavigableSet<T> transform(Function<? super E, T> function) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public NavigableSet<E> tailSet(E fromElement, boolean inclusive) {
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> deepClone() throws IOException, ClassNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> descendingSet() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> filter(Predicate<? super E> predicate) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> headSet(E toElement) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> headSet(E toElement, boolean inclusive) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> subSet(E fromElement, E toElement) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> tailSet(E fromElement) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> tailSet(E fromElement, boolean inclusive) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

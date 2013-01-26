@@ -6,7 +6,12 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
+import com.rits.cloning.Cloner;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
+import yuu.akron.ulang.DeepClonable;
+import yuu.akron.ulang.DeepCloneUtils;
 
 /**
  *
@@ -58,7 +63,7 @@ public class TreeSetWithUtility<E> extends TreeSet<E> implements yuu.akron.ucoll
     }
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.SortedSet<E> tailSet(E fromElement) {
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> tailSet(E fromElement) {
         return new TreeSetWithUtility<E>(super.tailSet(fromElement));
     }
 
@@ -68,7 +73,7 @@ public class TreeSetWithUtility<E> extends TreeSet<E> implements yuu.akron.ucoll
     }
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.SortedSet<E> subSet(E fromElement, E toElement) {
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> subSet(E fromElement, E toElement) {
         return new TreeSetWithUtility<E>(super.subSet(fromElement, toElement));
     }
 
@@ -78,7 +83,7 @@ public class TreeSetWithUtility<E> extends TreeSet<E> implements yuu.akron.ucoll
     }
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.SortedSet<E> headSet(E toElement) {
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> headSet(E toElement) {
         return new TreeSetWithUtility<E>(super.headSet(toElement));
     }
 
@@ -94,7 +99,7 @@ public class TreeSetWithUtility<E> extends TreeSet<E> implements yuu.akron.ucoll
 
     @Override
     public yuu.akron.ucollection.another.TreeSet<E> clone() {
-        return new yuu.akron.ucollection.another.TreeSet<E>(this);
+        return (yuu.akron.ucollection.another.TreeSet<E>)super.clone();
     }
 
     @Override
@@ -205,5 +210,27 @@ public class TreeSetWithUtility<E> extends TreeSet<E> implements yuu.akron.ucoll
     @Override
     public Sets.SetView<E> union(Set<? extends E> set2) {
         return Sets.union(this, set2);
+    }
+
+    @Override
+    public yuu.akron.ucollection.another.TreeSet<E> deepClone() throws IOException, ClassNotFoundException {
+        if (this.isEmpty()) {
+            return new yuu.akron.ucollection.another.TreeSet<E>();
+        }
+
+        yuu.akron.ucollection.another.TreeSet<E> set = new yuu.akron.ucollection.another.TreeSet<E>();
+
+        for (E item : this) {
+            if (item instanceof DeepClonable) {
+                set.add((E) ((DeepClonable) item).deepClone());
+            } else if (item instanceof Serializable) {
+                set.add((E) DeepCloneUtils.deepCopy((Serializable) item));
+            } else {
+                Cloner cloner = new Cloner();
+                set.add(cloner.deepClone(item));
+            }
+        }
+
+        return set;
     }
 }

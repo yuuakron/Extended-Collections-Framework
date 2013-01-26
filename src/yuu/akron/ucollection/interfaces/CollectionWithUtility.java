@@ -2,6 +2,7 @@ package yuu.akron.ucollection.interfaces;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Enumeration;
@@ -38,4 +39,7 @@ public interface CollectionWithUtility<E> extends IterableWithUtility<E>, Collec
     public yuu.akron.ucollection.interfaces.another.Collection<E> filter(Predicate<? super E> predicate);
 
     public <T> yuu.akron.ucollection.interfaces.another.Collection<T> transform(Function<? super E, T> function);
+    
+    @Override
+    public yuu.akron.ucollection.interfaces.another.Collection<E> deepClone() throws IOException, ClassNotFoundException ;
 }

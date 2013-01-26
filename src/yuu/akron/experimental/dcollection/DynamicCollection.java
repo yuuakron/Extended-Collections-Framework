@@ -6,13 +6,12 @@ import java.lang.reflect.Method;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import yuu.akron.ucollection.interfaces.CollectionWithUtility;
 
 /**
  *
  * @author yuuakron
  */
-public abstract class DynamicCollection<E> extends DynamicCollectionBase implements CollectionWithUtility<E> {
+public abstract class DynamicCollection<E> extends DynamicCollectionBase implements yuu.akron.ucollection.interfaces.another.Collection<E> {
 
     //Collection
     public boolean add(E e) {

@@ -6,7 +6,12 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
+import com.rits.cloning.Cloner;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
+import yuu.akron.ulang.DeepClonable;
+import yuu.akron.ulang.DeepCloneUtils;
 
 /**
  *
@@ -169,6 +174,28 @@ public class LinkedHashSetWithUtility<E> extends LinkedHashSet<E> implements yuu
 
     @Override
     public yuu.akron.ucollection.another.LinkedHashSet<E> clone() {
-        return new yuu.akron.ucollection.another.LinkedHashSet(this);
+        return (yuu.akron.ucollection.another.LinkedHashSet<E>)super.clone();
+    }
+
+    @Override
+    public yuu.akron.ucollection.another.LinkedHashSet<E> deepClone() throws IOException, ClassNotFoundException {
+        if (this.isEmpty()) {
+            return new yuu.akron.ucollection.another.LinkedHashSet<E>();
+        }
+
+        yuu.akron.ucollection.another.LinkedHashSet<E> set = new yuu.akron.ucollection.another.LinkedHashSet<E>();
+
+        for (E item : this) {
+            if (item instanceof DeepClonable) {
+                set.add((E) ((DeepClonable) item).deepClone());
+            } else if (item instanceof Serializable) {
+                set.add((E) DeepCloneUtils.deepCopy((Serializable) item));
+            } else {
+                Cloner cloner = new Cloner();
+                set.add(cloner.deepClone(item));
+            }
+        }
+
+        return set;
     }
 }

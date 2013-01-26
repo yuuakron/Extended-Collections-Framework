@@ -5,6 +5,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
+import com.rits.cloning.Cloner;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
@@ -275,7 +276,7 @@ public class ArrayListWithUtility<E> extends ArrayList<E> implements yuu.akron.u
     }
 
     @Override
-    public yuu.akron.ucollection.another.ArrayList<E> deepCopy() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.another.ArrayList<E> deepClone() throws IOException, ClassNotFoundException {
         if (this.isEmpty()) {
             return new yuu.akron.ucollection.another.ArrayList<E>();
         }
@@ -284,11 +285,12 @@ public class ArrayListWithUtility<E> extends ArrayList<E> implements yuu.akron.u
 
         for (E item : this) {
             if (item instanceof DeepClonable) {
-                list.add((E) ((DeepClonable) item).deepCopy());
+                list.add((E) ((DeepClonable) item).deepClone());
             } else if (item instanceof Serializable) {
                 list.add((E) DeepCloneUtils.deepCopy((Serializable) item));
             } else {
-                throw new IOException(item.getClass().getName()+": Not supported deepCopy");
+                Cloner cloner = new Cloner();
+                list.add(cloner.deepClone(item));
             }
         }
 

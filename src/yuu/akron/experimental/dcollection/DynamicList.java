@@ -1,16 +1,18 @@
 package yuu.akron.experimental.dcollection;
 
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import yuu.akron.ucollection.interfaces.ListWithUtility;
 
 /**
  *
  * @author yuuakron
  */
-public class DynamicList<E> extends DynamicCollection<E> implements ListWithUtility<E> {
+public class DynamicList<E> extends DynamicCollection<E> implements yuu.akron.ucollection.interfaces.another.List<E> {
 
     public static class Builder<E> {
 
@@ -126,16 +128,6 @@ public class DynamicList<E> extends DynamicCollection<E> implements ListWithUtil
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public List<E> subList(int fromIndex, int toIndex) {
-        try {
-            Method method = collection.getClass().getMethod("subList", int.class, int.class);
-            return (List<E>) method.invoke(collection, fromIndex, toIndex);
-        } catch (Exception ex) {
-            Logger.getLogger(DynamicList.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     //Utility from java.util.Collections
     public <E extends Comparable<? super E>> int binarySearch(E key) {
         return Collections.binarySearch((List<E>) collection, key);
@@ -222,6 +214,26 @@ public class DynamicList<E> extends DynamicCollection<E> implements ListWithUtil
     }
 
     public void unmodifiable() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.List<E> deepClone() throws IOException, ClassNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.List<E> filter(Predicate<? super E> predicate) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.List<E> subList(int fromIndex, int toIndex) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public <T> yuu.akron.ucollection.interfaces.another.List<T> transform(Function<? super E, T> function) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     

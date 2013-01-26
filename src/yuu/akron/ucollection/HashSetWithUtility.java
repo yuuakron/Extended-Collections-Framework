@@ -6,7 +6,12 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
+import com.rits.cloning.Cloner;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
+import yuu.akron.ulang.DeepClonable;
+import yuu.akron.ulang.DeepCloneUtils;
 
 /**
  *
@@ -16,7 +21,7 @@ import java.util.*;
  * @version 1.0
  */
 public class HashSetWithUtility<E> extends HashSet<E> implements yuu.akron.ucollection.interfaces.another.Set<E> {
-    
+
     public HashSetWithUtility(int initialCapacity) {
         super(initialCapacity);
     }
@@ -59,7 +64,7 @@ public class HashSetWithUtility<E> extends HashSet<E> implements yuu.akron.ucoll
 
     @Override
     public yuu.akron.ucollection.another.HashSet<E> clone() {
-        return new yuu.akron.ucollection.another.HashSet<E>(this);
+        return (yuu.akron.ucollection.another.HashSet<E>)super.clone();
     }
 
     @Override
@@ -170,5 +175,27 @@ public class HashSetWithUtility<E> extends HashSet<E> implements yuu.akron.ucoll
     @Override
     public Sets.SetView<E> union(Set<? extends E> set2) {
         return Sets.union(this, set2);
+    }
+
+    @Override
+    public yuu.akron.ucollection.another.HashSet<E> deepClone() throws IOException, ClassNotFoundException {
+        if (this.isEmpty()) {
+            return new yuu.akron.ucollection.another.HashSet<E>();
+        }
+
+        yuu.akron.ucollection.another.HashSet<E> set = new yuu.akron.ucollection.another.HashSet<E>();
+
+        for (E item : this) {
+            if (item instanceof DeepClonable) {
+                set.add((E) ((DeepClonable) item).deepClone());
+            } else if (item instanceof Serializable) {
+                set.add((E) DeepCloneUtils.deepCopy((Serializable) item));
+            } else {
+                Cloner cloner = new Cloner();
+                set.add(cloner.deepClone(item));
+            }
+        }
+
+        return set;
     }
 }

@@ -4,17 +4,19 @@
  */
 package yuu.akron.experimental.dcollection;
 
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
+import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.Collections;
 import java.util.Deque;
 import java.util.Iterator;
-import yuu.akron.ucollection.interfaces.DequeWithUtility;
 
 /**
  *
  * @author yuuakron
  */
-public class DynamicDeque<E> extends DynamicQueue<E> implements DequeWithUtility<E> {
+public class DynamicDeque<E> extends DynamicQueue<E> implements yuu.akron.ucollection.interfaces.another.Deque<E> {
 
     public static class Builder<E> {
 
@@ -124,4 +126,21 @@ public class DynamicDeque<E> extends DynamicQueue<E> implements DequeWithUtility
     public yuu.akron.ucollection.interfaces.another.Queue<E> asLifoQueue() {
         return new yuu.akron.ucollection.another.ArrayDeque(Collections.asLifoQueue((Deque<E>) collection));
     }
+
+    @Override
+    public <T> yuu.akron.ucollection.interfaces.another.Deque<T> transform(Function<? super E, T> function) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.Deque<E> deepClone() throws IOException, ClassNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.Deque<E> filter(Predicate<? super E> predicate) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    
 }

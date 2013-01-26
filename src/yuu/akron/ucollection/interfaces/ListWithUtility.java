@@ -1,17 +1,22 @@
 package yuu.akron.ucollection.interfaces;
 
+import com.google.common.base.Function;
+import com.google.common.base.Predicate;
+import java.io.IOException;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
 /**
  *
- * @param <E> 
+ * @param <E>
  * @author yuu@akron
  * @since 1.0
  * @version 1.0
  */
 public interface ListWithUtility<E> extends CollectionWithUtility<E>, List<E> {
+
     public <E extends Comparable<? super E>> int binarySearch(E key);
 
     public int binarySearch(E key, Comparator<? super E> c);
@@ -39,4 +44,16 @@ public interface ListWithUtility<E> extends CollectionWithUtility<E>, List<E> {
     public void sort(Comparator<? super E> c);
 
     public void swap(int i, int j);
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.List<E> subList(int fromIndex, int toIndex);
+    
+    @Override
+    public yuu.akron.ucollection.interfaces.another.List<E> filter(Predicate<? super E> predicate);
+
+    @Override
+    public <T> yuu.akron.ucollection.interfaces.another.List<T> transform(Function<? super E, T> function);
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.List<E> deepClone() throws IOException, ClassNotFoundException ;
 }

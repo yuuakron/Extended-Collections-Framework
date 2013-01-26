@@ -7,6 +7,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.*;
 
@@ -276,5 +277,10 @@ public class EnumSetWithUtility<E extends Enum<E>> extends AbstractSet<E> implem
     @Override
     public String toString() {
         return set.toString();
+    }
+
+    @Override
+    public yuu.akron.ucollection.another.EnumSet<E> deepClone() throws IOException, ClassNotFoundException {
+        return copyOf(this);
     }
 }

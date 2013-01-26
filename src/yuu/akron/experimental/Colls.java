@@ -3,6 +3,7 @@ package yuu.akron.experimental;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Sets.SetView;
+import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.*;
 import java.util.logging.Level;
@@ -10,7 +11,6 @@ import java.util.logging.Logger;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import yuu.akron.ucollection.interfaces.*;
 
 /*
  * To change this template, choose Tools | Templates and open the template in
@@ -21,7 +21,13 @@ import yuu.akron.ucollection.interfaces.*;
  * @author yuuakron
  */
 public class Colls<E, K, V> implements Collection<E>, List<E>, Set<E>, SortedSet<E>, NavigableSet<E>, Queue<E>, Deque<E>,
-                                       CollectionWithUtility<E>, ListWithUtility<E>, SetWithUtility<E>, SortedSetWithUtility<E>, NavigableSetWithUtility<E>, QueueWithUtility<E>, DequeWithUtility<E> {
+                                       yuu.akron.ucollection.interfaces.another.Collection<E>, 
+                                       yuu.akron.ucollection.interfaces.another.List<E>, 
+                                       yuu.akron.ucollection.interfaces.another.Set<E>, 
+                                       yuu.akron.ucollection.interfaces.another.SortedSet<E>, 
+                                       yuu.akron.ucollection.interfaces.another.NavigableSet<E>, 
+                                       yuu.akron.ucollection.interfaces.another.Queue<E>, 
+                                       yuu.akron.ucollection.interfaces.another.Deque<E> {
     //listの場合 Eは要素の型
     //mapの場合 EはKeyの型、Vは値の型
 
@@ -355,16 +361,6 @@ public class Colls<E, K, V> implements Collection<E>, List<E>, Set<E>, SortedSet
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public List<E> subList(int fromIndex, int toIndex) {
-        try {
-            Method method = collection.getClass().getMethod("subList", int.class, int.class);
-            return (List<E>) method.invoke(collection, fromIndex, toIndex);
-        } catch (Exception ex) {
-            Logger.getLogger(Colls.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     //SortedSet関連
     public Comparator<? super E> comparator() {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -378,18 +374,6 @@ public class Colls<E, K, V> implements Collection<E>, List<E>, Set<E>, SortedSet
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public SortedSet<E> headSet(E toElement) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public SortedSet<E> subSet(E fromElement, E toElement) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public SortedSet<E> tailSet(E fromElement) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     //NavigableSet関連
     public E ceiling(E e) {
         throw new UnsupportedOperationException("Not supported yet.");
@@ -399,16 +383,7 @@ public class Colls<E, K, V> implements Collection<E>, List<E>, Set<E>, SortedSet
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public NavigableSet<E> descendingSet() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     public E floor(E e) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public NavigableSet<E> headSet(E toElement, boolean inclusive) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -425,14 +400,6 @@ public class Colls<E, K, V> implements Collection<E>, List<E>, Set<E>, SortedSet
     }
 
     public E pollLast() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public NavigableSet<E> subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public NavigableSet<E> tailSet(E fromElement, boolean inclusive) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -746,16 +713,6 @@ public class Colls<E, K, V> implements Collection<E>, List<E>, Set<E>, SortedSet
     }
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.Collection<E> filter(Predicate<? super E> predicate) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public <T> yuu.akron.ucollection.interfaces.another.Collection<T> transform(Function<? super E, T> function) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
     public SetView<E> difference(Set<?> set2) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
@@ -925,4 +882,60 @@ public class Colls<E, K, V> implements Collection<E>, List<E>, Set<E>, SortedSet
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> descendingSet() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    
+    @Override
+    public Colls<E,K,V> subList(int fromIndex, int toIndex){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    @Override
+    public Colls<E,K,V> filter(Predicate<? super E> predicate){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public <T> Colls<T,K,V> transform(Function<? super E, T> function){
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public Colls<E,K,V> deepClone() throws IOException, ClassNotFoundException{
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> headSet(E toElement) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> headSet(E toElement, boolean inclusive) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> subSet(E fromElement, E toElement) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> subSet(E fromElement, boolean fromInclusive, E toElement, boolean toInclusive) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> tailSet(E fromElement) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> tailSet(E fromElement, boolean inclusive) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }  
 }

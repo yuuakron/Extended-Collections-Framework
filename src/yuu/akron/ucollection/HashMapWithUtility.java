@@ -6,8 +6,13 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Maps.EntryTransformer;
+import com.rits.cloning.Cloner;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import yuu.akron.ulang.DeepClonable;
+import yuu.akron.ulang.DeepCloneUtils;
 
 /**
  *
@@ -103,6 +108,42 @@ public class HashMapWithUtility<K, V> extends HashMap<K, V> implements yuu.akron
 
     @Override
     public yuu.akron.ucollection.another.HashMap<K, V> clone() {
-        return new yuu.akron.ucollection.another.HashMap<K, V>(this);
+        return (yuu.akron.ucollection.another.HashMap<K, V>)super.clone();
+    }
+
+    @Override
+    public yuu.akron.ucollection.another.HashMap<K, V> deepClone() throws IOException, ClassNotFoundException {
+        yuu.akron.ucollection.another.HashMap<K, V> map = new yuu.akron.ucollection.another.HashMap<K, V>();
+
+        if (this.isEmpty()) {
+            return map;
+        }
+
+        for (Map.Entry<K, V> item : this.entrySet()) {
+            K key = item.getKey();
+            V value = item.getValue();
+
+            if (key instanceof DeepClonable) {
+                key = (K) ((DeepClonable) key).deepClone();
+            } else if (key instanceof Serializable) {
+                key = DeepCloneUtils.deepCopy(key);
+            } else {
+                Cloner cloner = new Cloner();
+                key = cloner.deepClone(key);
+            }
+
+            if (value instanceof DeepClonable) {
+                value = (V) ((DeepClonable) value).deepClone();
+            } else if (value instanceof Serializable) {
+                value = DeepCloneUtils.deepCopy(value);
+            } else {
+                Cloner cloner = new Cloner();
+                value = cloner.deepClone(value);
+            }
+
+            map.put(key, value);
+        }
+
+        return map;
     }
 }

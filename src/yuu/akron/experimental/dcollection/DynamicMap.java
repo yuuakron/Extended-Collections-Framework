@@ -9,14 +9,16 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps.EntryTransformer;
-import java.util.*;
-import yuu.akron.ucollection.interfaces.MapWithUtility;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author yuuakron
  */
-public class DynamicMap<K, V> extends DynamicCollectionBase implements MapWithUtility<K, V> {
+public class DynamicMap<K, V> extends DynamicCollectionBase implements yuu.akron.ucollection.interfaces.another.Map<K, V> {
         public static class Builder<K, V> {
 
         private Object collection;
@@ -64,19 +66,11 @@ public class DynamicMap<K, V> extends DynamicCollectionBase implements MapWithUt
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public Set<Entry<K, V>> entrySet() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
     public V get(Object key) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public Set<K> keySet() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -93,10 +87,6 @@ public class DynamicMap<K, V> extends DynamicCollectionBase implements MapWithUt
     }
 
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public Collection<V> values() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -157,6 +147,26 @@ public class DynamicMap<K, V> extends DynamicCollectionBase implements MapWithUt
 
     @Override
     public <V2> yuu.akron.ucollection.interfaces.another.Map<K, V2> transformValues(Function<? super V, V2> function) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.Map<K, V> deepClone() throws IOException, ClassNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.Set<Entry<K, V>> entrySet() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.Set<K> keySet() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public yuu.akron.ucollection.interfaces.another.Collection<V> values() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
     
