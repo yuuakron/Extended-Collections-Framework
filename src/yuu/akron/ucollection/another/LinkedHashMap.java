@@ -8,8 +8,8 @@ import yuu.akron.ucollection.ULinkedHashMap;
  * @param <K> 
  * @param <V> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class LinkedHashMap<K, V> extends ULinkedHashMap<K, V> {
 

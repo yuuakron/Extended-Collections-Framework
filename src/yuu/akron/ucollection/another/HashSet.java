@@ -7,8 +7,8 @@ import yuu.akron.ucollection.UHashSet;
  *
  * @param <E> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class HashSet<E> extends UHashSet<E> {
 

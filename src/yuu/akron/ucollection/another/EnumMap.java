@@ -8,8 +8,6 @@ import yuu.akron.ucollection.UEnumMap;
  * @param <K> 
  * @param <V> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
  */
 public class EnumMap<K extends Enum<K>, V> extends UEnumMap<K, V> {
 

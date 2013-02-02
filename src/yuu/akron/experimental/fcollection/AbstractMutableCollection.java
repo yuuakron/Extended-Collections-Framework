@@ -8,8 +8,6 @@ import java.util.Iterator;
  *
  * @param <E> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
  */
 public abstract class AbstractMutableCollection<E> implements FunctionalCollection<E> {
     protected boolean changedflag = false;

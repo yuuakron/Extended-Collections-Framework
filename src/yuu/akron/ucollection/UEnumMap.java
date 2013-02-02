@@ -8,8 +8,8 @@ import java.util.Map;
  * @param <K> 
  * @param <V> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class UEnumMap<K extends Enum<K>, V> extends EnumMapWithUtility<K, V> {
 

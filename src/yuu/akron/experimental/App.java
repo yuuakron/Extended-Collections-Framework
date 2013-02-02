@@ -13,8 +13,6 @@ import yuu.akron.ulang.String;
  * 実験のためのクラス
  *
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
  */
 public class App {
 
@@ -29,7 +27,7 @@ public class App {
 
         try {
             pw = S("/Users/yuuakron/test.csv").openPrintWriter();//PrintWriter open
-            pw.println("list num,clone,deepClonable,Sirializable,cloner");
+            pw.println("list elements,clone,deepClonable,Sirializable,cloner");
 
         } catch (Exception ex) {}
 

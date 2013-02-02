@@ -7,8 +7,6 @@ import java.util.ListIterator;
  * @param <E>
  *
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
  */
 public interface FunctionalList<E> extends FunctionalCollection<E> {
 

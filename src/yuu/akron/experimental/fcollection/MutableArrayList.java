@@ -10,8 +10,6 @@ import java.util.RandomAccess;
  *
  * @param <E>
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
  */
 public class MutableArrayList<E> extends AbstractMutableList<E> implements Serializable, Cloneable, RandomAccess {
 

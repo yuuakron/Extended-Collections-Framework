@@ -15,8 +15,6 @@ import java.util.*;
  *
  * @param <E>
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
  */
 public class EnumSetWithUtility<E extends Enum<E>> extends AbstractSet<E> implements Cloneable, Serializable, yuu.akron.ucollection.interfaces.another.Set<E> {
 

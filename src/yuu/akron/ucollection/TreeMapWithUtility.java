@@ -17,8 +17,8 @@ import yuu.akron.ulang.DeepCloneUtils;
  * @param <K>
  * @param <V>
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class TreeMapWithUtility<K, V> extends TreeMap<K, V> implements yuu.akron.ucollection.interfaces.another.NavigableMap<K, V> {
 

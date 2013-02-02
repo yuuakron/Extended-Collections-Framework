@@ -8,8 +8,6 @@ import yuu.akron.ucollection.UHashMap;
  * @param <K> 
  * @param <V> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
  */
 public class HashMap<K, V> extends UHashMap<K, V> {
 

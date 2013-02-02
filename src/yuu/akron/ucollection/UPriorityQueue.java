@@ -9,8 +9,8 @@ import java.util.SortedSet;
  *
  * @param <E> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class UPriorityQueue<E> extends PriorityQueueWithUtility<E> {
 

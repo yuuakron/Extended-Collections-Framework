@@ -9,8 +9,8 @@ import yuu.akron.ucollection.UPriorityQueue;
  *
  * @param <E> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class PriorityQueue<E> extends UPriorityQueue<E> {
 

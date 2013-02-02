@@ -7,8 +7,6 @@ import java.util.*;
  *
  * @param <E>
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
  */
 public class ImmutableArrayList<E> extends AbstractImmutableList<E> implements Serializable, Cloneable, RandomAccess {
 

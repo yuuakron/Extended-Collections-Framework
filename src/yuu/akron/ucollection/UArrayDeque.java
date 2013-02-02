@@ -6,8 +6,8 @@ import java.util.Collection;
  *
  * @param <E> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class UArrayDeque<E> extends ArrayDequeWithUtility<E> {
 

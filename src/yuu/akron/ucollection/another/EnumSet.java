@@ -6,8 +6,6 @@ import yuu.akron.ucollection.UEnumSet;
  *
  * @param <E>
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
  */
 public class EnumSet<E extends Enum<E>> extends UEnumSet<E> {
 

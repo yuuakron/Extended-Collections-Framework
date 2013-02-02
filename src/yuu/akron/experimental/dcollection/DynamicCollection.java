@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 public abstract class DynamicCollection<E> extends DynamicCollectionBase implements yuu.akron.ucollection.interfaces.another.Collection<E> {
 
     //Collection
+    @Override
     public boolean add(E e) {
         try {
             Method method = collection.getClass().getMethod("add", Object.class);

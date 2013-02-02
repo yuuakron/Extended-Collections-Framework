@@ -8,8 +8,8 @@ import java.util.SortedSet;
  *
  * @param <E> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class UTreeSet<E> extends TreeSetWithUtility<E>{
 

@@ -8,8 +8,8 @@ import yuu.akron.ucollection.UIdentityHashMap;
  * @param <K> 
  * @param <V> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class IdentityHashMap<K, V> extends UIdentityHashMap<K, V> {
 

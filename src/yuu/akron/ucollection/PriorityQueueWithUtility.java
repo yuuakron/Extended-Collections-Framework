@@ -18,8 +18,8 @@ import yuu.akron.ulang.DeepCloneUtils;
  *
  * @param <E>
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class PriorityQueueWithUtility<E> extends PriorityQueue<E> implements yuu.akron.ucollection.interfaces.another.Queue<E> {
 

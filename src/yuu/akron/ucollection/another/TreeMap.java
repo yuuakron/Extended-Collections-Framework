@@ -10,8 +10,8 @@ import yuu.akron.ucollection.UTreeMap;
  * @param <K> 
  * @param <V> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class TreeMap<K, V> extends UTreeMap<K, V> {
 

@@ -16,8 +16,6 @@ import yuu.akron.ulang.DeepCloneUtils;
  *
  * @param <E>
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
  */
 public class ArrayDequeWithUtility<E> extends ArrayDeque<E> implements yuu.akron.ucollection.interfaces.another.Deque<E> {
 

@@ -9,8 +9,8 @@ import java.util.SortedMap;
  * @param <K> 
  * @param <V> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class UTreeMap<K, V> extends TreeMapWithUtility<K, V> {
 

@@ -17,8 +17,8 @@ import yuu.akron.ulang.DeepCloneUtils;
  *
  * @param <E>
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class TreeSetWithUtility<E> extends TreeSet<E> implements yuu.akron.ucollection.interfaces.another.NavigableSet<E> {
 

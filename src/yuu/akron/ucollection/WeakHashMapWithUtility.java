@@ -20,8 +20,8 @@ import yuu.akron.ulang.DeepCloneUtils;
  * @param <K>
  * @param <V>
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class WeakHashMapWithUtility<K, V> extends WeakHashMap<K, V> implements yuu.akron.ucollection.interfaces.another.Map<K, V> {
 

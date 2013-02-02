@@ -7,8 +7,6 @@ import java.util.List;
 /**
  *
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
  */
 public class FunctionalCollections {
 

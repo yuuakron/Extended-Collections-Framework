@@ -8,8 +8,6 @@ import yuu.akron.ulang.DeepClonable;
  *
  * @param <E> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
  */
 public interface IterableWithUtility<E> extends Iterable<E>, DeepClonable{ 
     public boolean all(Predicate<? super E> predicate);

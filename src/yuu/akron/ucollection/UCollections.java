@@ -10,8 +10,8 @@ import java.util.*;
  *  com.google.common.collect.Collections2
  * 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class UCollections{
 

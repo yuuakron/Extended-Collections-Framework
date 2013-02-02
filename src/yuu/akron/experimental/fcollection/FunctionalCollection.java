@@ -5,8 +5,6 @@ package yuu.akron.experimental.fcollection;
  * @param <E>
  *
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
  */
 public interface FunctionalCollection<E> extends Iterable<E> {
 

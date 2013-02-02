@@ -3,7 +3,6 @@ package yuu.akron.ucollection.interfaces;
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
@@ -12,8 +11,6 @@ import java.util.Random;
  *
  * @param <E>
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
  */
 public interface ListWithUtility<E> extends CollectionWithUtility<E>, List<E> {
 

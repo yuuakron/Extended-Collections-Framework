@@ -8,8 +8,8 @@ import yuu.akron.ucollection.UWeakHashMap;
  * @param <K> 
  * @param <V> 
  * @author yuu@akron
- * @since 1.0
- * @version 1.0
+ *
+ *
  */
 public class WeakHashMap<K, V> extends UWeakHashMap<K, V> {
 
