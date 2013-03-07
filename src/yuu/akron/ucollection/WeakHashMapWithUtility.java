@@ -110,15 +110,15 @@ public class WeakHashMapWithUtility<K, V> extends WeakHashMap<K, V> implements y
     @Override
     public yuu.akron.ucollection.another.WeakHashMap<K, V> clone() {
         try {
-            return (yuu.akron.ucollection.another.WeakHashMap<K, V>)super.clone();
+            return (yuu.akron.ucollection.another.WeakHashMap<K, V>) super.clone();
         } catch (CloneNotSupportedException ex) {
             Logger.getLogger(WeakHashMapWithUtility.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
-    
+
     @Override
-    public yuu.akron.ucollection.another.WeakHashMap<K, V> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.another.WeakHashMap<K, V> deepClone() {
         yuu.akron.ucollection.another.WeakHashMap<K, V> map = new yuu.akron.ucollection.another.WeakHashMap<K, V>();
 
         if (this.isEmpty()) {
@@ -132,19 +132,25 @@ public class WeakHashMapWithUtility<K, V> extends WeakHashMap<K, V> implements y
             if (key instanceof DeepClonable) {
                 key = (K) ((DeepClonable) key).deepClone();
             } else if (key instanceof Serializable) {
-                key = DeepCloneUtils.deepCopy(key);
+                try {
+                    key = DeepCloneUtils.deepCopy(key);
+                } catch (Exception e) {
+                    key = DeepCloneUtils.deepCopyWithCloner(key);
+                }
             } else {
-                Cloner cloner = new Cloner();
-                key = cloner.deepClone(key);
+                key = DeepCloneUtils.deepCopyWithCloner(key);
             }
 
             if (value instanceof DeepClonable) {
                 value = (V) ((DeepClonable) value).deepClone();
             } else if (value instanceof Serializable) {
-                value = DeepCloneUtils.deepCopy(value);
+                try {
+                    value = DeepCloneUtils.deepCopy(value);
+                } catch (Exception e) {
+                    value = DeepCloneUtils.deepCopyWithCloner(value);
+                }
             } else {
-                Cloner cloner = new Cloner();
-                value = cloner.deepClone(value);
+                value = DeepCloneUtils.deepCopyWithCloner(value);
             }
 
             map.put(key, value);

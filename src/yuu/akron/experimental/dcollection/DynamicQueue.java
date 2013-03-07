@@ -73,7 +73,7 @@ public class DynamicQueue<E> extends DynamicCollection<E> implements yuu.akron.u
     }
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.Queue<E> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.interfaces.another.Queue<E> deepClone(){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

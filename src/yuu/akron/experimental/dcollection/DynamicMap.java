@@ -147,7 +147,7 @@ public class DynamicMap<K, V> extends DynamicCollectionBase implements yuu.akron
     }
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.Map<K, V> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.interfaces.another.Map<K, V> deepClone(){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

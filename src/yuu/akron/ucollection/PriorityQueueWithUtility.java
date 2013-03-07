@@ -172,7 +172,7 @@ public class PriorityQueueWithUtility<E> extends PriorityQueue<E> implements yuu
     @Override
     public yuu.akron.ucollection.another.PriorityQueue<E> clone() {
         try {
-            return (yuu.akron.ucollection.another.PriorityQueue<E>)super.clone();
+            return (yuu.akron.ucollection.another.PriorityQueue<E>) super.clone();
         } catch (CloneNotSupportedException ex) {
             Logger.getLogger(PriorityQueueWithUtility.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -180,7 +180,7 @@ public class PriorityQueueWithUtility<E> extends PriorityQueue<E> implements yuu
     }
 
     @Override
-    public yuu.akron.ucollection.another.PriorityQueue<E> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.another.PriorityQueue<E> deepClone() {
         if (this.isEmpty()) {
             return new yuu.akron.ucollection.another.PriorityQueue<E>();
         }
@@ -191,10 +191,13 @@ public class PriorityQueueWithUtility<E> extends PriorityQueue<E> implements yuu
             if (item instanceof DeepClonable) {
                 queue.add((E) ((DeepClonable) item).deepClone());
             } else if (item instanceof Serializable) {
-                queue.add((E) DeepCloneUtils.deepCopy((Serializable) item));
+                try {
+                    queue.add(DeepCloneUtils.deepCopy(item));
+                } catch (Exception e) {
+                    queue.add(DeepCloneUtils.deepCopyWithCloner(item));
+                }
             } else {
-                Cloner cloner = new Cloner();
-                queue.add(cloner.deepClone(item));
+                queue.add(DeepCloneUtils.deepCopyWithCloner(item));
             }
         }
 

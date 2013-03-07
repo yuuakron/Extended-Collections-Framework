@@ -130,7 +130,7 @@ public class DynamicNavigableMap<K, V> extends DynamicMap<K, V> implements yuu.a
     }
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.NavigableMap<K, V> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.interfaces.another.NavigableMap<K, V> deepClone(){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

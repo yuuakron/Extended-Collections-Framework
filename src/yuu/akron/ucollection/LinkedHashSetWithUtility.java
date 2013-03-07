@@ -174,11 +174,11 @@ public class LinkedHashSetWithUtility<E> extends LinkedHashSet<E> implements yuu
 
     @Override
     public yuu.akron.ucollection.another.LinkedHashSet<E> clone() {
-        return (yuu.akron.ucollection.another.LinkedHashSet<E>)super.clone();
+        return (yuu.akron.ucollection.another.LinkedHashSet<E>) super.clone();
     }
 
     @Override
-    public yuu.akron.ucollection.another.LinkedHashSet<E> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.another.LinkedHashSet<E> deepClone() {
         if (this.isEmpty()) {
             return new yuu.akron.ucollection.another.LinkedHashSet<E>();
         }
@@ -189,10 +189,13 @@ public class LinkedHashSetWithUtility<E> extends LinkedHashSet<E> implements yuu
             if (item instanceof DeepClonable) {
                 set.add((E) ((DeepClonable) item).deepClone());
             } else if (item instanceof Serializable) {
-                set.add((E) DeepCloneUtils.deepCopy((Serializable) item));
+                try {
+                    set.add(DeepCloneUtils.deepCopy(item));
+                } catch (Exception e) {
+                    set.add(DeepCloneUtils.deepCopyWithCloner(item));
+                }
             } else {
-                Cloner cloner = new Cloner();
-                set.add(cloner.deepClone(item));
+                set.add(DeepCloneUtils.deepCopyWithCloner(item));
             }
         }
 

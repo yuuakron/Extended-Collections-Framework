@@ -58,5 +58,5 @@ public interface NavigableMapWithUtility<K, V> extends SortedMapWithUtility<K, V
     public <V2> yuu.akron.ucollection.interfaces.another.NavigableMap<K, V2> transformValues(Function<? super V, V2> function);
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.NavigableMap<K, V> deepClone() throws IOException, ClassNotFoundException ;
+    public yuu.akron.ucollection.interfaces.another.NavigableMap<K, V> deepClone();
 }

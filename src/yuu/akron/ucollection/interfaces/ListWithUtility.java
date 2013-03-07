@@ -52,5 +52,5 @@ public interface ListWithUtility<E> extends CollectionWithUtility<E>, List<E> {
     public <T> yuu.akron.ucollection.interfaces.another.List<T> transform(Function<? super E, T> function);
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.List<E> deepClone() throws IOException, ClassNotFoundException ;
+    public yuu.akron.ucollection.interfaces.another.List<E> deepClone();
 }

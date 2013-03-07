@@ -176,7 +176,7 @@ public class HashSetWithUtility<E> extends HashSet<E> implements yuu.akron.ucoll
     }
 
     @Override
-    public yuu.akron.ucollection.another.HashSet<E> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.another.HashSet<E> deepClone(){
         if (this.isEmpty()) {
             return new yuu.akron.ucollection.another.HashSet<E>();
         }
@@ -187,10 +187,13 @@ public class HashSetWithUtility<E> extends HashSet<E> implements yuu.akron.ucoll
             if (item instanceof DeepClonable) {
                 set.add((E) ((DeepClonable) item).deepClone());
             } else if (item instanceof Serializable) {
-                set.add((E) DeepCloneUtils.deepCopy((Serializable) item));
+                try{
+                    set.add(DeepCloneUtils.deepCopy(item));
+                }catch(Exception e){
+                    set.add(DeepCloneUtils.deepCopyWithCloner(item));
+                }
             } else {
-                Cloner cloner = new Cloner();
-                set.add(cloner.deepClone(item));
+                set.add(DeepCloneUtils.deepCopyWithCloner(item));
             }
         }
 

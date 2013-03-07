@@ -19,7 +19,7 @@ public interface NavigableSetWithUtility<E> extends SortedSetWithUtility<E>, Nav
     public <T> yuu.akron.ucollection.interfaces.another.NavigableSet<T> transform(Function<? super E, T> function);
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> deepClone() throws IOException, ClassNotFoundException ;
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> deepClone();
 
     @Override
     public yuu.akron.ucollection.interfaces.another.NavigableSet<E> headSet(E toElement);

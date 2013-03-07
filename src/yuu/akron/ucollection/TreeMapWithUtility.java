@@ -155,7 +155,7 @@ public class TreeMapWithUtility<K, V> extends TreeMap<K, V> implements yuu.akron
     }
 
     @Override
-    public yuu.akron.ucollection.another.TreeMap<K, V> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.another.TreeMap<K, V> deepClone() {
         yuu.akron.ucollection.another.TreeMap<K, V> map = new yuu.akron.ucollection.another.TreeMap<K, V>();
 
         if (this.isEmpty()) {
@@ -169,19 +169,25 @@ public class TreeMapWithUtility<K, V> extends TreeMap<K, V> implements yuu.akron
             if (key instanceof DeepClonable) {
                 key = (K) ((DeepClonable) key).deepClone();
             } else if (key instanceof Serializable) {
-                key = DeepCloneUtils.deepCopy(key);
+                try {
+                    key = DeepCloneUtils.deepCopy(key);
+                } catch (Exception e) {
+                    key = DeepCloneUtils.deepCopyWithCloner(key);
+                }
             } else {
-                Cloner cloner = new Cloner();
-                key = cloner.deepClone(key);
+                key = DeepCloneUtils.deepCopyWithCloner(key);
             }
 
             if (value instanceof DeepClonable) {
                 value = (V) ((DeepClonable) value).deepClone();
             } else if (value instanceof Serializable) {
-                value = DeepCloneUtils.deepCopy(value);
+                try {
+                    value = DeepCloneUtils.deepCopy(value);
+                } catch (Exception e) {
+                    value = DeepCloneUtils.deepCopyWithCloner(value);
+                }
             } else {
-                Cloner cloner = new Cloner();
-                value = cloner.deepClone(value);
+                value = DeepCloneUtils.deepCopyWithCloner(value);
             }
 
             map.put(key, value);

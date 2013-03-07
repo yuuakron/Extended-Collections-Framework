@@ -28,5 +28,5 @@ public interface SetWithUtility<E> extends CollectionWithUtility<E>, Set<E> {
     public <T> yuu.akron.ucollection.interfaces.another.Set<T> transform(Function<? super E, T> function);
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.Set<E> deepClone() throws IOException, ClassNotFoundException ;
+    public yuu.akron.ucollection.interfaces.another.Set<E> deepClone();
 }

@@ -19,5 +19,5 @@ public interface QueueWithUtility<E> extends CollectionWithUtility<E>, Queue<E> 
     public <T> yuu.akron.ucollection.interfaces.another.Queue<T> transform(Function<? super E, T> function);
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.Queue<E> deepClone() throws IOException, ClassNotFoundException ;
+    public yuu.akron.ucollection.interfaces.another.Queue<E> deepClone();
 }

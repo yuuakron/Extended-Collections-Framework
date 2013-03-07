@@ -129,7 +129,7 @@ public class DynamicDeque<E> extends DynamicQueue<E> implements yuu.akron.ucolle
     }
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.Deque<E> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.interfaces.another.Deque<E> deepClone(){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

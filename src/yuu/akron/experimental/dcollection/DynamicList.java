@@ -218,7 +218,7 @@ public class DynamicList<E> extends DynamicCollection<E> implements yuu.akron.uc
     }
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.List<E> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.interfaces.another.List<E> deepClone(){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

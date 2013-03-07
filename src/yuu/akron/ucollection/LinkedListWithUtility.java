@@ -57,7 +57,7 @@ public class LinkedListWithUtility<E> extends LinkedList<E> implements yuu.akron
 
     @Override
     public yuu.akron.ucollection.another.LinkedList<E> clone() {
-        return (yuu.akron.ucollection.another.LinkedList<E>)super.clone();
+        return (yuu.akron.ucollection.another.LinkedList<E>) super.clone();
     }
 
     //Utility from java.util.Collections
@@ -226,7 +226,7 @@ public class LinkedListWithUtility<E> extends LinkedList<E> implements yuu.akron
     }
 
     @Override
-    public yuu.akron.ucollection.another.LinkedList<E> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.another.LinkedList<E> deepClone() {
         if (this.isEmpty()) {
             return new yuu.akron.ucollection.another.LinkedList<E>();
         }
@@ -237,10 +237,13 @@ public class LinkedListWithUtility<E> extends LinkedList<E> implements yuu.akron
             if (item instanceof DeepClonable) {
                 list.add((E) ((DeepClonable) item).deepClone());
             } else if (item instanceof Serializable) {
-                list.add((E) DeepCloneUtils.deepCopy((Serializable) item));
+                try {
+                    list.add(DeepCloneUtils.deepCopy(item));
+                } catch (Exception e) {
+                    list.add(DeepCloneUtils.deepCopyWithCloner(item));
+                }
             } else {
-                Cloner cloner = new Cloner();
-                list.add(cloner.deepClone(item));
+                list.add(DeepCloneUtils.deepCopyWithCloner(item));
             }
         }
 

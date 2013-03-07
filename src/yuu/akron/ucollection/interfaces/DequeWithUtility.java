@@ -21,5 +21,5 @@ public interface DequeWithUtility<E> extends QueueWithUtility<E>, Deque<E> {
     public <T> yuu.akron.ucollection.interfaces.another.Deque<T> transform(Function<? super E, T> function);
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.Deque<E> deepClone() throws IOException, ClassNotFoundException ;
+    public yuu.akron.ucollection.interfaces.another.Deque<E> deepClone();
 }

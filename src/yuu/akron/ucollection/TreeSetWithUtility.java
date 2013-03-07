@@ -99,7 +99,7 @@ public class TreeSetWithUtility<E> extends TreeSet<E> implements yuu.akron.ucoll
 
     @Override
     public yuu.akron.ucollection.another.TreeSet<E> clone() {
-        return (yuu.akron.ucollection.another.TreeSet<E>)super.clone();
+        return (yuu.akron.ucollection.another.TreeSet<E>) super.clone();
     }
 
     @Override
@@ -142,7 +142,7 @@ public class TreeSetWithUtility<E> extends TreeSet<E> implements yuu.akron.ucoll
         return Collections.min(this, comp);
     }
 
-        @Override
+    @Override
     public boolean all(Predicate<? super E> predicate) {
         return Iterables.all(this, predicate);
     }
@@ -213,7 +213,7 @@ public class TreeSetWithUtility<E> extends TreeSet<E> implements yuu.akron.ucoll
     }
 
     @Override
-    public yuu.akron.ucollection.another.TreeSet<E> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.another.TreeSet<E> deepClone() {
         if (this.isEmpty()) {
             return new yuu.akron.ucollection.another.TreeSet<E>();
         }
@@ -224,10 +224,13 @@ public class TreeSetWithUtility<E> extends TreeSet<E> implements yuu.akron.ucoll
             if (item instanceof DeepClonable) {
                 set.add((E) ((DeepClonable) item).deepClone());
             } else if (item instanceof Serializable) {
-                set.add((E) DeepCloneUtils.deepCopy((Serializable) item));
+                try {
+                    set.add(DeepCloneUtils.deepCopy(item));
+                } catch (Exception e) {
+                    set.add(DeepCloneUtils.deepCopyWithCloner(item));
+                }
             } else {
-                Cloner cloner = new Cloner();
-                set.add(cloner.deepClone(item));
+                set.add(DeepCloneUtils.deepCopyWithCloner(item));
             }
         }
 

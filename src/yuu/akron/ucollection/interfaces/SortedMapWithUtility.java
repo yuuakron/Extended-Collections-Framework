@@ -40,5 +40,5 @@ public interface SortedMapWithUtility<K, V> extends MapWithUtility<K, V>, Sorted
     public <V2> yuu.akron.ucollection.interfaces.another.SortedMap<K, V2> transformValues(Function<? super V, V2> function);
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.SortedMap<K, V> deepClone() throws IOException, ClassNotFoundException ;
+    public yuu.akron.ucollection.interfaces.another.SortedMap<K, V> deepClone();
 }

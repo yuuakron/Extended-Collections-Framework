@@ -115,11 +115,11 @@ public class LinkedHashMapWithUtility<K, V> extends LinkedHashMap<K, V> implemen
 
     @Override
     public yuu.akron.ucollection.another.LinkedHashMap<K, V> clone() {
-        return (yuu.akron.ucollection.another.LinkedHashMap<K, V>)super.clone();
+        return (yuu.akron.ucollection.another.LinkedHashMap<K, V>) super.clone();
     }
-    
-        @Override
-    public yuu.akron.ucollection.another.LinkedHashMap<K, V> deepClone() throws IOException, ClassNotFoundException {
+
+    @Override
+    public yuu.akron.ucollection.another.LinkedHashMap<K, V> deepClone() {
         yuu.akron.ucollection.another.LinkedHashMap<K, V> map = new yuu.akron.ucollection.another.LinkedHashMap<K, V>();
 
         if (this.isEmpty()) {
@@ -133,19 +133,25 @@ public class LinkedHashMapWithUtility<K, V> extends LinkedHashMap<K, V> implemen
             if (key instanceof DeepClonable) {
                 key = (K) ((DeepClonable) key).deepClone();
             } else if (key instanceof Serializable) {
-                key = DeepCloneUtils.deepCopy(key);
+                try {
+                    key = DeepCloneUtils.deepCopy(key);
+                } catch (Exception e) {
+                    key = DeepCloneUtils.deepCopyWithCloner(key);
+                }
             } else {
-                Cloner cloner = new Cloner();
-                key = cloner.deepClone(key);
+                key = DeepCloneUtils.deepCopyWithCloner(key);
             }
 
             if (value instanceof DeepClonable) {
                 value = (V) ((DeepClonable) value).deepClone();
             } else if (value instanceof Serializable) {
-                value = DeepCloneUtils.deepCopy(value);
+                try {
+                    value = DeepCloneUtils.deepCopy(value);
+                } catch (Exception e) {
+                    value = DeepCloneUtils.deepCopyWithCloner(value);
+                }
             } else {
-                Cloner cloner = new Cloner();
-                value = cloner.deepClone(value);
+                value = DeepCloneUtils.deepCopyWithCloner(value);
             }
 
             map.put(key, value);

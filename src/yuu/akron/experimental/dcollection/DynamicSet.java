@@ -93,7 +93,7 @@ public class DynamicSet<E> extends DynamicCollection<E> implements yuu.akron.uco
     }
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.Set<E> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.interfaces.another.Set<E> deepClone(){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

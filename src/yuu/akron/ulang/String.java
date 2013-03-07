@@ -441,7 +441,7 @@ public class String implements DeepClonable{
      */
     //deepclone
     @Override
-    public String deepClone() throws IOException, ClassNotFoundException {
+    public String deepClone(){
         return this;
     }
 

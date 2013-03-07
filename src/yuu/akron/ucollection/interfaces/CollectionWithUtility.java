@@ -39,5 +39,5 @@ public interface CollectionWithUtility<E> extends IterableWithUtility<E>, Collec
     public <T> yuu.akron.ucollection.interfaces.another.Collection<T> transform(Function<? super E, T> function);
     
     @Override
-    public yuu.akron.ucollection.interfaces.another.Collection<E> deepClone() throws IOException, ClassNotFoundException ;
+    public yuu.akron.ucollection.interfaces.another.Collection<E> deepClone();
 }

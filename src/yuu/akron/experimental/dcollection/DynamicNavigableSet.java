@@ -116,7 +116,7 @@ public class DynamicNavigableSet<E> extends DynamicSet<E> implements yuu.akron.u
     }
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.interfaces.another.NavigableSet<E> deepClone(){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

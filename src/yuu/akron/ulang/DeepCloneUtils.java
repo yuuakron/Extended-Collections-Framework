@@ -1,5 +1,6 @@
 package yuu.akron.ulang;
 
+import com.rits.cloning.Cloner;
 import java.io.*;
 
 /**
@@ -11,20 +12,39 @@ public class DeepCloneUtils {
     private DeepCloneUtils() {
     }
 
-    public static <T> T deepCopy(T src) throws IOException, ClassNotFoundException {
-        if(!(src instanceof Serializable)){
-            throw new IOException("not supported");
+    public static <T> T deepCopy(T src) throws IOException, CloneNotSupportedException, ClassNotFoundException {
+        if (!(src instanceof Serializable)) {
+            throw new CloneNotSupportedException("src is not Serializable class");
         }
-        
-        ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        ObjectOutputStream oout = new ObjectOutputStream(bout);
-        oout.writeObject(src);
-        oout.flush();
 
-        byte[] serialized = bout.toByteArray();
+        ByteArrayOutputStream bout = null;
+        ObjectOutputStream oout = null;
+        ByteArrayInputStream bin = null;
+        ObjectInputStream oin = null;
 
-        ByteArrayInputStream bin = new ByteArrayInputStream(serialized);
-        ObjectInputStream oin = new ObjectInputStream(bin);
-        return (T) oin.readObject();
+        try {
+            bout = new ByteArrayOutputStream();
+            oout = new ObjectOutputStream(bout);
+            oout.writeObject(src);
+            oout.flush();
+
+            byte[] serialized = bout.toByteArray();
+
+            bin = new ByteArrayInputStream(serialized);
+            oin = new ObjectInputStream(bin);
+            T copyedObject = (T) oin.readObject();
+
+            return copyedObject;
+        } finally {
+            bout.close();
+            oout.close();
+            bin.close();
+            oin.close();
+        }
+    }
+
+    public static <T> T deepCopyWithCloner(T src){
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(src);
     }
 }

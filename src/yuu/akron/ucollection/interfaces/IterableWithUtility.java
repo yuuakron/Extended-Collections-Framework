@@ -23,5 +23,5 @@ public interface IterableWithUtility<E> extends Iterable<E>, DeepClonable{
     public boolean removeIf(Predicate<? super E> predicate);
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.Iterable<E> deepClone() throws IOException, ClassNotFoundException ;
+    public yuu.akron.ucollection.interfaces.another.Iterable<E> deepClone();
 }

@@ -19,7 +19,7 @@ public interface SortedSetWithUtility<E> extends SetWithUtility<E>, SortedSet<E>
     public <T> yuu.akron.ucollection.interfaces.another.SortedSet<T> transform(Function<? super E, T> function);
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.SortedSet<E> deepClone() throws IOException, ClassNotFoundException ;
+    public yuu.akron.ucollection.interfaces.another.SortedSet<E> deepClone();
 
     @Override
     public yuu.akron.ucollection.interfaces.another.SortedSet<E> headSet(E toElement);

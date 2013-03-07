@@ -41,5 +41,5 @@ public interface MapWithUtility<K, V> extends Map<K, V>, DeepClonable {
     public yuu.akron.ucollection.interfaces.another.Collection<V> values();
 
     @Override
-    public yuu.akron.ucollection.interfaces.another.Map<K, V> deepClone() throws IOException, ClassNotFoundException ;
+    public yuu.akron.ucollection.interfaces.another.Map<K, V> deepClone();
 }

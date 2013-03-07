@@ -19,12 +19,12 @@ public class App {
     private static List<List<List<String>>> list;
     private static PrintWriter pw;
     private static List<List<List<String>>> list2 = null;
-
+    
     /**
      * いろいろ試すメイン関数
      */
     public static void main(java.lang.String[] args) {
-
+        
         try {
             pw = S("/Users/yuuakron/test.csv").openPrintWriter();//PrintWriter open
             pw.println("list elements,clone,deepClonable,Sirializable,cloner");

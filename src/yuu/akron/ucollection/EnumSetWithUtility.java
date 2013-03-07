@@ -278,7 +278,7 @@ public class EnumSetWithUtility<E extends Enum<E>> extends AbstractSet<E> implem
     }
 
     @Override
-    public yuu.akron.ucollection.another.EnumSet<E> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.another.EnumSet<E> deepClone(){
         return copyOf(this);
     }
 }

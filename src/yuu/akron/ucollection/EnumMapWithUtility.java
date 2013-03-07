@@ -103,7 +103,7 @@ public class EnumMapWithUtility<K extends Enum<K>, V> extends EnumMap<K, V> impl
     }
 
     @Override
-    public yuu.akron.ucollection.another.EnumMap<K, V> deepClone() throws IOException, ClassNotFoundException {        
+    public yuu.akron.ucollection.another.EnumMap<K, V> deepClone(){        
         if (this.isEmpty()) {
             throw new IllegalArgumentException("Specified map is empty");
         }
@@ -115,23 +115,17 @@ public class EnumMapWithUtility<K extends Enum<K>, V> extends EnumMap<K, V> impl
         for (Map.Entry<K, V> item : this.entrySet()) {
             K key = item.getKey();
             V value = item.getValue();
-            /*
-            if (key instanceof DeepClonable) {
-                key = (K) ((DeepClonable) key).deepClone();
-            } else if (key instanceof Serializable) {
-                key = DeepCloneUtils.deepCopy(key);
-            } else {
-                Cloner cloner = new Cloner();
-                key = cloner.deepClone(key);
-            }*/
 
             if (value instanceof DeepClonable) {
                 value = (V) ((DeepClonable) value).deepClone();
             } else if (value instanceof Serializable) {
-                value = DeepCloneUtils.deepCopy(value);
+                try{
+                    value = DeepCloneUtils.deepCopy(value);
+                }catch(Exception e){
+                    value = DeepCloneUtils.deepCopyWithCloner(value);                    
+                }
             } else {
-                Cloner cloner = new Cloner();
-                value = cloner.deepClone(value);
+                value = DeepCloneUtils.deepCopyWithCloner(value);
             }
             
             map.put(key, value);

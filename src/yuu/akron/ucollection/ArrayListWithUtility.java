@@ -274,7 +274,7 @@ public class ArrayListWithUtility<E> extends ArrayList<E> implements yuu.akron.u
     }
 
     @Override
-    public yuu.akron.ucollection.another.ArrayList<E> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.another.ArrayList<E> deepClone() {
         if (this.isEmpty()) {
             return new yuu.akron.ucollection.another.ArrayList<E>();
         }
@@ -285,10 +285,13 @@ public class ArrayListWithUtility<E> extends ArrayList<E> implements yuu.akron.u
             if (item instanceof DeepClonable) {
                 list.add((E) ((DeepClonable) item).deepClone());
             } else if (item instanceof Serializable) {
-                list.add((E) DeepCloneUtils.deepCopy((Serializable) item));
+                try {
+                    list.add(DeepCloneUtils.deepCopy(item));
+                } catch (Exception e) {
+                    list.add(DeepCloneUtils.deepCopyWithCloner(item));
+                }
             } else {
-                Cloner cloner = new Cloner();
-                list.add(cloner.deepClone(item));
+                list.add(DeepCloneUtils.deepCopyWithCloner(item));
             }
         }
 

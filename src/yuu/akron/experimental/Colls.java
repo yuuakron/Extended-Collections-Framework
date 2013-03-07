@@ -901,7 +901,7 @@ public class Colls<E, K, V> implements Collection<E>, List<E>, Set<E>, SortedSet
     }
 
     @Override
-    public Colls<E,K,V> deepClone() throws IOException, ClassNotFoundException{
+    public Colls<E,K,V> deepClone(){
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

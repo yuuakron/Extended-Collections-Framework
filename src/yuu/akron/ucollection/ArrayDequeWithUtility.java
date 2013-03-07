@@ -153,7 +153,7 @@ public class ArrayDequeWithUtility<E> extends ArrayDeque<E> implements yuu.akron
     }
 
     @Override
-    public yuu.akron.ucollection.another.ArrayDeque<E> deepClone() throws IOException, ClassNotFoundException {
+    public yuu.akron.ucollection.another.ArrayDeque<E> deepClone(){
         if (this.isEmpty()) {
             return new yuu.akron.ucollection.another.ArrayDeque<E>();
         }
@@ -164,10 +164,13 @@ public class ArrayDequeWithUtility<E> extends ArrayDeque<E> implements yuu.akron
             if (item instanceof DeepClonable) {
                 deque.add((E) ((DeepClonable) item).deepClone());
             } else if (item instanceof Serializable) {
-                deque.add((E) DeepCloneUtils.deepCopy((Serializable) item));
+                try{
+                    deque.add(DeepCloneUtils.deepCopy(item));
+                }catch(Exception e){
+                    deque.add(DeepCloneUtils.deepCopyWithCloner(item));
+                }
             } else {
-                Cloner cloner = new Cloner();
-                deque.add(cloner.deepClone(item));
+                deque.add(DeepCloneUtils.deepCopyWithCloner(item));
             }
         }
 
